@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DeezerService } from './services/DeezerService.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'musicdb-app-angular';
+
+  constructor(private service: DeezerService) {
+    console.log(
+      this.service.searchArtist('Bruno Mars', 3, 0)
+      .subscribe(response => {
+        console.log(response);
+      }, error => {
+        console.log(error);
+      }));
+  }
 }

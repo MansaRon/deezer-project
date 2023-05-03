@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "prestart": "npm install",
-    "start": "concurrently \"ng serve -o\" \"node server/deezer-api.js\"",
+    "start": "ng serve -o",
+    "serve": "concurrently \"ng serve -o\" \"node server/deezer-api.js\"",
     "build": "ng build",
     "test": "ng test",
     "hacker-rank:start": "ng serve --host 0.0.0.0 --port 8000 --disable-host-check",
