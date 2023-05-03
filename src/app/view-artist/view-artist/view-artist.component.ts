@@ -12,13 +12,16 @@ export class ViewArtistComponent implements OnInit {
 
   routeSub!: Subscription;
   artistId!: string;
+  artistDetails!: string;
 
   constructor(private service: DeezerService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
       this.artistId = params['artistId'];
+      this.artistDetails = JSON.parse(sessionStorage.getItem("artistDetails") || '');
       console.log(this.artistId);
+      console.log(this.artistDetails);
       this.getArtistAlbums();
       this.artistTopCharts();
     })
