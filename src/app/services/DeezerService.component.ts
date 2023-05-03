@@ -31,10 +31,14 @@ export class DeezerService {
     }
 
     numberOfFans(artistId: string) {
-        let params = {
-            id: artistId
-        };
+        return this.http.get(`https://api.deezer.com/artist/${artistId}`);
+    }
 
-        return this.http.get('https://api.deezer.com/artist', { params });
+    topCharts(artistId: string) {
+        return this.http.get(`https://api.deezer.com/artist/${artistId}/top`);
+    }
+
+    artistAlbums(artistId: string) {
+        return this.http.get(`https://api.deezer.com/artist/${artistId}/albums`);
     }
 }

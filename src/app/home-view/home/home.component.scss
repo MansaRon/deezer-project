@@ -14,3 +14,13 @@
 .card-body-styling {
     padding: unset;
 }
+
+@media (max-width: 575.98px) {
+    .artists {
+        display: initial;
+    }
+
+    .card-body-styling {
+        padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+    }
+}

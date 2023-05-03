@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { APIResponse, Artist } from 'src/app/model/model';
 import { DeezerService } from 'src/app/services/DeezerService.component';
 
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   artistThumbNail!: ImageBitmap;
   artistDetails: any;
 
-  constructor(private service: DeezerService) { }
+  constructor(private service: DeezerService, private route: Router) { }
 
   ngOnInit(): void {
     console.log(
@@ -31,14 +32,16 @@ export class HomeComponent implements OnInit {
 
   public viewDetails(artistId: any): void {
     console.log(artistId);
-    this.service.numberOfFans(artistId).subscribe({
-      next:(response: any) => {
-        console.log(response);
-      }, error:(error) => {
-        console.log(error);
-      },  
-      complete:() => {}
-    })
+    sessionStorage.setItem("artistDetails", JSON.stringify(artistId));
+    this.route.navigate(['view-artist', artistId]);
+    // this.service.numberOfFans(artistId).subscribe({
+    //   next:(response: any) => {
+    //     console.log(response);
+    //   }, error:(error) => {
+    //     console.log(error);
+    //   },  
+    //   complete:() => {}
+    // })
   }
 
 }
