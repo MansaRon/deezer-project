@@ -19,10 +19,18 @@
         <!-- <div class="d-flex align-items-center"> -->
             <div class="artists">
                 <ng-container *ngFor="let artist of artistDetails">
-                    <div class="viewArtist" (click)="viewDetails(artist)">
-                        <img *ngIf="artist.album.cover" src="{{ artist.album.cover }}" alt="Album Cover" class="album-cover" />
-                        <p *ngIf="!artist.album.cover">No Image Available</p>
-                        <p class="name">{{ artist.artist.name }}</p>
+                    <div class="card mx-3">
+                        <div class="card-body card-body-styling">
+                            <div class="viewArtist" (click)="viewDetails(artist.artist.id)">
+                                <img *ngIf="artist.album.cover_medium" src="{{ artist.album.cover_medium }}" alt="Album Cover" class="album-cover" />
+                                <p *ngIf="!artist.album.cover_medium">No Image Available</p>
+                                <p class="p-2 name">
+                                    {{ artist.artist.name }}
+                                    <br />
+                                    985 Fans
+                                </p>
+                            </div>
+                        </div>
                     </div>
                     <div class="aristName mt-2">
                         

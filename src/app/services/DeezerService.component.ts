@@ -30,11 +30,9 @@ export class DeezerService {
         return this.http.get(this.localApi, { params });
     }
 
-    numberOfArtists(query: string, limit = 10, offset = 0) {
+    numberOfFans(artistId: string) {
         let params = {
-            q: query,
-            limit: limit.toString(),
-            offset: offset.toString()
+            id: artistId
         };
 
         return this.http.get('https://api.deezer.com/artist', { params });

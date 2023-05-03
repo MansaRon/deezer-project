@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
       .subscribe({
         next:(response: any) => {
           this.artistDetails = response.data;
-          console.log(this.artistDetails);
+          console.log(this.artistDetails);          
         }, error:() => {
 
         }, complete:() => {}
@@ -30,7 +30,15 @@ export class HomeComponent implements OnInit {
   }
 
   public viewDetails(artistId: any): void {
-    console.log(artistId.id);
+    console.log(artistId);
+    this.service.numberOfFans(artistId).subscribe({
+      next:(response: any) => {
+        console.log(response);
+      }, error:(error) => {
+        console.log(error);
+      },  
+      complete:() => {}
+    })
   }
 
 }

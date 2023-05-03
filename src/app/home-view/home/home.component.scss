@@ -4,10 +4,13 @@
 }
 
 .viewArtist {
-    width: 300px;
-    margin: 10px;
-    height: 330px;
+    width: 240px;
     overflow: hidden;
     transition-duration: 0.3s;
     cursor: pointer;
+    text-align: initial;
+}
+
+.card-body-styling {
+    padding: unset;
 }
