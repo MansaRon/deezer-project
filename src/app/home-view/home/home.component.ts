@@ -19,26 +19,15 @@ export class HomeComponent implements OnInit {
   constructor(private service: DeezerService, private route: Router) { }
 
   ngOnInit(): void {
-    // this.searchArtist();
   }
 
   public searchArtist(searchString: string) {
-    this.service.localSearchArtist(searchString, 3, 0).subscribe({
+    this.service.localSearchArtist(searchString, 4, 0).subscribe({
       next:(response: any) => {
         this.searchResults = true;
         this.artistDetails = response.data;       
       }, error:() => {
         
-      }, complete:() => {}
-    })
-  }
-
-  public checkChange() {
-    this.service.localSearchArtist(this.artistName, 3, 0).subscribe({
-      next:(response: any) => {
-        this.artistDetails = response.data;       
-      }, error:() => {
-
       }, complete:() => {}
     })
   }
