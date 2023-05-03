@@ -6,7 +6,6 @@ import { HttpClient } from "@angular/common/http";
 })
 export class DeezerService {
     private api = '/api/artist';
-    private localApi = 'https://api.deezer.com/search';
 
     constructor(private http: HttpClient) {}
 
@@ -27,7 +26,7 @@ export class DeezerService {
             offset: offset.toString()
         };
 
-        return this.http.get(this.localApi, { params });
+        return this.http.get('https://api.deezer.com/search', { params });
     }
 
     numberOfFans(artistId: string) {
@@ -35,10 +34,10 @@ export class DeezerService {
     }
 
     topCharts(artistId: string) {
-        return this.http.get(`https://api.deezer.com/artist/${artistId}/top`);
+        return this.http.get(`https://api.deezer.com/artist/${artistId}/top?limit=5`);
     }
 
     artistAlbums(artistId: string) {
-        return this.http.get(`https://api.deezer.com/artist/${artistId}/albums`);
+        return this.http.get(`https://api.deezer.com/artist/${artistId}/albums?limit=4`);
     }
 }

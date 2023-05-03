@@ -6,7 +6,7 @@ import { ViewArtistComponent } from './view-artist/view-artist/view-artist.compo
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent},
-  { path: 'view-artist:/artistId', component: ViewArtistComponent }
+  { path: 'view-artist/:artistId', component: ViewArtistComponent }
 ];
 
 @NgModule({

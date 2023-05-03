@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
 
   public viewDetails(artistId: any): void {
     console.log(artistId);
-    sessionStorage.setItem("artistDetails", JSON.stringify(artistId));
+    // sessionStorage.setItem("artistDetails", JSON.stringify(artistId));
     this.route.navigate(['view-artist', artistId]);
     // this.service.numberOfFans(artistId).subscribe({
     //   next:(response: any) => {
