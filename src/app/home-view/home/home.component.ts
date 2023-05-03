@@ -23,13 +23,12 @@ export class HomeComponent implements OnInit {
   }
 
   public searchArtist(searchString: string) {
-    console.log(searchString);
     this.service.localSearchArtist(searchString, 3, 0).subscribe({
       next:(response: any) => {
         this.searchResults = true;
         this.artistDetails = response.data;       
       }, error:() => {
-
+        
       }, complete:() => {}
     })
   }

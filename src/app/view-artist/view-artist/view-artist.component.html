@@ -1,17 +1,52 @@
 <div class="container-fluid">
     <div class="d-flex flex-row align-items-center">
-        <div class="d-flex d-md-none">
-            <img src="" alt="Profile Picture" class="rounded-circle" style="width: 36px; height: 36px; margin-left: 10px;" />
+        <!-- <div class="d-flex d-md-none">
+            <img src="" alt="Profile Picture" class="rounded-circle"
+                style="width: 36px; height: 36px; margin-left: 10px;" />
         </div>
         <div class="d-none d-md-flex">
-            <img src="" alt="Profile Picture" class="rounded-circle" style="width: 48px; height: 48px; margin-left: 10px;" />
-        </div>
+            <img src="" alt="Profile Picture" class="rounded-circle"
+                style="width: 48px; height: 48px; margin-left: 10px;" />
+        </div> -->
         <div class="bg-light p-2 mb-3 flex-grow-1">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" />
+                <input type="text" class="form-control" placeholder="Search" aria-label="Search"
+                    aria-describedby="button-addon2" />
             </div>
         </div>
     </div>
 
-    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-8">
+
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="mb-3">Albums</h3> 
+                <div class="artists">
+                    <ng-container *ngFor="let album of albums">
+                        <div class="card-body card-body-styling">
+                            <div class="viewArtist">
+                                <img *ngIf="album.cover_medium" src="{{ album.cover_medium }}" alt="Album Cover"
+                                    class="album-cover" />
+                                <p *ngIf="!album.cover_medium">No Image Available</p>
+                                <p class="p-2 name">
+                                    {{ artistDetails.name }}
+                                    <br />
+                                    {{ album.release_date | date: 'yyyy' }}
+                                </p>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>    
+            </div>
+        </div>
+    </div>
 </div>

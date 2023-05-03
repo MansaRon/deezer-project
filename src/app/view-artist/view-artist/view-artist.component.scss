@@ -1,0 +1,22 @@
+.viewArtist {
+    width: 240px;
+    overflow: hidden;
+    transition-duration: 0.3s;
+    cursor: pointer;
+    text-align: initial;
+}
+
+.artists {
+    display: flex;
+    text-align: center;
+}
+
+@media (max-width: 575.98px) {
+    .artists {
+        display: initial;
+    }
+
+    .card-body-styling {
+        padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+    }
+}

@@ -12,7 +12,8 @@ export class ViewArtistComponent implements OnInit {
 
   routeSub!: Subscription;
   artistId!: string;
-  artistDetails!: string;
+  artistDetails!: any;
+  albums: any;
 
   constructor(private service: DeezerService, private activatedRoute: ActivatedRoute) { }
 
@@ -20,25 +21,25 @@ export class ViewArtistComponent implements OnInit {
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
       this.artistId = params['artistId'];
       this.artistDetails = JSON.parse(sessionStorage.getItem("artistDetails") || '');
-      console.log(this.artistId);
       console.log(this.artistDetails);
-      this.getArtistAlbums();
-      this.artistTopCharts();
+      this.getArtistAlbums(this.artistId);
+      this.artistTopCharts(this.artistId);
     })
   }
 
-  public getArtistAlbums() {
-    this.service.artistAlbums(this.artistId).subscribe({
+  public getArtistAlbums(id: string) {
+    this.service.artistAlbums(id).subscribe({
       next:(response: any) => {
-        console.log(response); 
+        console.log(response.data); 
+        this.albums = response.data;
       }, error:(error: any) => {
         console.log(error);
       }
     })
   }
 
-  public artistTopCharts() {
-    this.service.topCharts(this.artistId).subscribe({
+  public artistTopCharts(id: string) {
+    this.service.topCharts(id).subscribe({
       next:(response: any) => {
         console.log(response); 
       }, error:(error: any) => {
