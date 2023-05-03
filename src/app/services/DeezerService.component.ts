@@ -6,6 +6,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class DeezerService {
     private api = '/api/artist';
+    private localApi = 'https://api.deezer.com/search';
 
     constructor(private http: HttpClient) {}
 
@@ -17,5 +18,15 @@ export class DeezerService {
         };
 
         return this.http.get(this.api, { params });
+    }
+
+    localSearchArtist(query: string, limit = 10, offset = 0) {
+        let params = {
+            q: query,
+            limit: limit.toString(),
+            offset: offset.toString()
+        };
+
+        return this.http.get(this.localApi, { params });
     }
 }

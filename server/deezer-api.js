@@ -1,9 +1,31 @@
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// cors settings
+const corsOptions = {
+    origin:'http://localhost:3000',
+    credential: true,
+    optionSuccessStatus: 200
+}
+app.use(cors(corsOptions));
+
+// loading middleware
+app.use(bodyParser.json());
+
+// cors for all routes
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+})
+
+// url for getting artists
 app.get('/api/artist', async (req, res) => {
     try {
         const response = await axios.get('https://api.deezer.com/search', {
@@ -23,6 +45,7 @@ app.get('/api/artist', async (req, res) => {
     }
 });
 
+// running server
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });

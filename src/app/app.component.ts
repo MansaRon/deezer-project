@@ -11,7 +11,7 @@ export class AppComponent {
 
   constructor(private service: DeezerService) {
     console.log(
-      this.service.searchArtist('Bruno Mars', 3, 0)
+      this.service.localSearchArtist('Bruno Mars', 3, 0)
       .subscribe(response => {
         console.log(response);
       }, error => {
