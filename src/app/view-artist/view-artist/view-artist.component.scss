@@ -4,6 +4,11 @@
     transition-duration: 0.3s;
     cursor: pointer;
     text-align: initial;
+
+    &:hover {
+        box-shadow: 4px 3px 11px 6px rgba(255, 29, 29, 0.46);
+        transform: translateY(-3px);
+    }
 }
 
 .artists {

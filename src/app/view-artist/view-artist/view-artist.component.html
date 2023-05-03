@@ -1,13 +1,13 @@
 <div class="container-fluid">
     <div class="d-flex flex-row align-items-center">
-        <!-- <div class="d-flex d-md-none">
-            <img src="" alt="Profile Picture" class="rounded-circle"
+        <div class="d-flex d-md-none">
+            <img src="../../../assets/placeholder.jpg" alt="Profile Picture" class="rounded-circle"
                 style="width: 36px; height: 36px; margin-left: 10px;" />
         </div>
         <div class="d-none d-md-flex">
-            <img src="" alt="Profile Picture" class="rounded-circle"
-                style="width: 48px; height: 48px; margin-left: 10px;" />
-        </div> -->
+            <img src="../../../assets/placeholder.jpg" alt="Profile Picture" class="mb-4 rounded-circle"
+                style="width: 60px; height: 60px; margin-left: 8px;" />
+        </div>
         <div class="bg-light p-2 mb-3 flex-grow-1">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Search" aria-label="Search"
@@ -18,12 +18,18 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <div class="col-md-8">
-
+            <div class="col-md-12 d-flex flex-row">
+                <div class="col-md-8 p-2">
+                    <div class="card">
+                        <img *ngIf="artistDetails" src=" {{ artistDetails.picture }}" alt="Artist Cover" />
+                        <p *ngIf="!artistDetails">No Image Available</p>
+                    </div>
                 </div>
-                <div class="col-md-4">
-
+                <div class="col-md-3 p-2">
+                    <h4 class="mb-3">Top tracks</h4> 
+                    <ng-container *ngFor="let chart of charts; let i = index">
+                        <p>{{ i }}. {{ chart.title_short }}</p>
+                    </ng-container>
                 </div>
             </div>
         </div>
@@ -34,8 +40,7 @@
                     <ng-container *ngFor="let album of albums">
                         <div class="card-body card-body-styling">
                             <div class="viewArtist">
-                                <img *ngIf="album.cover_medium" src="{{ album.cover_medium }}" alt="Album Cover"
-                                    class="album-cover" />
+                                <img *ngIf="album.cover_medium" src="{{ album.cover_medium }}" alt="Album Cover"/>
                                 <p *ngIf="!album.cover_medium">No Image Available</p>
                                 <p class="p-2 name">
                                     {{ artistDetails.name }}

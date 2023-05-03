@@ -14,6 +14,7 @@ export class ViewArtistComponent implements OnInit {
   artistId!: string;
   artistDetails!: any;
   albums: any;
+  charts: any
 
   constructor(private service: DeezerService, private activatedRoute: ActivatedRoute) { }
 
@@ -42,6 +43,7 @@ export class ViewArtistComponent implements OnInit {
     this.service.topCharts(id).subscribe({
       next:(response: any) => {
         console.log(response); 
+        this.charts = response.data;
       }, error:(error: any) => {
         console.log(error);
       }
