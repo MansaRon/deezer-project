@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 
 // cors settings
 const corsOptions = {
-    origin:'http://localhost:3000',
+    origin:'http://127.0.0.1:3000',
     credential: true,
     optionSuccessStatus: 200
 }
@@ -41,6 +41,7 @@ app.get('/api/artist', async (req, res) => {
         res.json(response.data);
     } catch (error) {
         console.log(error);
+        console.log('inside the error block');
         res.status(500).send('Internal server error');
     }
 });
