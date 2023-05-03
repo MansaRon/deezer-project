@@ -1,0 +1,13 @@
+.artists {
+    display: flex;
+    text-align: center;
+}
+
+.viewArtist {
+    width: 300px;
+    margin: 10px;
+    height: 330px;
+    overflow: hidden;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}

@@ -1,5 +1,6 @@
 <div class="container-fluid">
     <div class="d-flex flex-row align-items-center">
+
         <div class="d-flex d-md-none">
             <img src="" alt="Profile Picture" class="rounded-circle" style="width: 36px; height: 36px; margin-left: 10px;" />
         </div>
@@ -11,5 +12,23 @@
                 <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" />
             </div>
         </div>
+
+    </div>
+
+    <div class="container">
+        <!-- <div class="d-flex align-items-center"> -->
+            <div class="artists">
+                <ng-container *ngFor="let artist of artistDetails">
+                    <div class="viewArtist" (click)="viewDetails(artist)">
+                        <img *ngIf="artist.album.cover" src="{{ artist.album.cover }}" alt="Album Cover" class="album-cover" />
+                        <p *ngIf="!artist.album.cover">No Image Available</p>
+                        <p class="name">{{ artist.artist.name }}</p>
+                    </div>
+                    <div class="aristName mt-2">
+                        
+                    </div>
+                </ng-container>
+            </div>
+        <!-- </div> -->
     </div>
 </div>

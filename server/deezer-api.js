@@ -46,6 +46,26 @@ app.get('/api/artist', async (req, res) => {
     }
 });
 
+app.get('/api/artist/details', async (req, res) => {
+    try {
+        const response = await axios.get('https://api.deezer.com/artist', {
+            params: {
+                q: req.params.q,
+                limit: req.params.limit || 10,
+                offset: req.params.offset || 0,
+                order: req.params.order || 'RANKING',
+                output: req.params.output || 'json',
+            },
+        });
+
+        res.json(response.data);
+    } catch (error) {
+        console.log(error);
+        console.log('inside the error block');
+        res.status(500).send('Internal server error');
+    }
+});
+
 // running server
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
