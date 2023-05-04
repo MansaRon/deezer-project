@@ -17,7 +17,6 @@
     </div>
 
     <div *ngIf="searchResults" class="container">
-        <!-- <div class="d-flex align-items-center"> -->
             <div class="artists">
                 <ng-container *ngFor="let artist of artistDetails">
                     <div class="card mx-3">
@@ -28,13 +27,11 @@
                                 <p class="p-2 name">
                                     {{ artist.artist.name }}
                                     <br />
-                                    985 Fans
                                 </p>
                             </div>
                         </div>
                     </div>
                 </ng-container>
             </div>
-        <!-- </div> -->
     </div>
 </div>

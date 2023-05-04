@@ -25,13 +25,12 @@ app.use((req, res, next) => {
     next();
 })
 
-// url for getting artists
 app.get('/api/artist', async (req, res) => {
     try {
         const response = await axios.get('https://api.deezer.com/search', {
             params: {
                 q: req.params.q,
-                limit: req.params.limit || 10,
+                limit: req.params.limit || 5,
                 offset: req.params.offset || 0,
                 order: req.params.order || 'RANKING',
                 output: req.params.output || 'json',
@@ -51,7 +50,7 @@ app.get('/api/artist/details', async (req, res) => {
         const response = await axios.get('https://api.deezer.com/artist', {
             params: {
                 q: req.params.q,
-                limit: req.params.limit || 10,
+                limit: req.params.limit || 5,
                 offset: req.params.offset || 0,
                 order: req.params.order || 'RANKING',
                 output: req.params.output || 'json',
@@ -66,7 +65,66 @@ app.get('/api/artist/details', async (req, res) => {
     }
 });
 
-// running server
+app.get('/api/artist/number/of/fans', async (req, res) => {
+    try {
+        const response = await axios.get('https://api.deezer.com/artist', {
+            params: {
+                q: req.params.q,
+                limit: req.params.limit || 5,
+                offset: req.params.offset || 0,
+                order: req.params.order || 'RANKING',
+                output: req.params.output || 'json',
+            },
+        });
+
+        res.json(response.data);
+    } catch (error) {
+        console.log(error);
+        console.log('inside the error block');
+        res.status(500).send('Internal server error');
+    }
+});
+
+app.get('/api/artist/top/charts', async (req, res) => {
+    try {
+        const response = await axios.get('https://api.deezer.com/artist', {
+            params: {
+                q: req.params.q,
+                limit: req.params.limit || 5,
+                offset: req.params.offset || 0,
+                order: req.params.order || 'RANKING',
+                output: req.params.output || 'json',
+            },
+        });
+
+        res.json(response.data);
+    } catch (error) {
+        console.log(error);
+        console.log('inside the error block');
+        res.status(500).send('Internal server error');
+    }
+});
+
+app.get('/api/artist/albums', async (req, res) => {
+    try {
+        const response = await axios.get('https://api.deezer.com/user', {
+            params: {
+                q: req.params.q,
+                limit: req.params.limit || 5,
+                offset: req.params.offset || 0,
+                order: req.params.order || 'RANKING',
+                output: req.params.output || 'json',
+            },
+        });
+
+        res.json(response.data);
+    } catch (error) {
+        console.log(error);
+        console.log('inside the error block');
+        res.status(500).send('Internal server error');
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });

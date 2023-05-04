@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
       next:(response: any) => {
         this.searchResults = true;
         this.artistDetails = response.data;       
-      }, error:() => {
+      }, error:(error) => {
         
       }, complete:() => {}
     })

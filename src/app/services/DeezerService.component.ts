@@ -9,7 +9,7 @@ export class DeezerService {
 
     constructor(private http: HttpClient) {}
 
-    searchArtist(query: string, limit = 10, offset = 0) {
+    searchArtist(query: string, limit: number, offset: number) {
         let params = {
             q: query,
             limit: limit.toString(),
@@ -19,7 +19,7 @@ export class DeezerService {
         return this.http.get(this.api, { params });
     }
 
-    localSearchArtist(query: string, limit = 10, offset = 0) {
+    localSearchArtist(query: string, limit: number, offset: number) {
         let params = {
             q: query,
             limit: limit.toString(),
@@ -39,5 +39,9 @@ export class DeezerService {
 
     artistAlbums(artistId: string) {
         return this.http.get(`https://api.deezer.com/artist/${artistId}/albums?limit=4`);
+    }
+
+    getUserInformation(artistId: string) {
+        return this.http.get(`https://api.deezer.com/user/${artistId}?index=0&limit=5`);
     }
 }
