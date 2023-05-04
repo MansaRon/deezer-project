@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { APIResponse, Artist } from 'src/app/model/model';
 import { DeezerService } from 'src/app/services/DeezerService.component';
 
 @Component({
