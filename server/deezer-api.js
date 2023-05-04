@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const path = require('path');
+
 // cors settings
 const corsOptions = {
     origin:'http://127.0.0.1:3000',
@@ -16,6 +18,13 @@ app.use(cors(corsOptions));
 
 // loading middleware
 app.use(bodyParser.json());
+
+app.use(express.static(__dirname + '/dist/order-app'));
+
+// hosting the project
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname+'/dist/musicdb-app-angular/index.html'));
+});
 
 // cors for all routes
 app.use((req, res, next) => {
